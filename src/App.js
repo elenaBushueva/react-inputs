@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+
+    const [quantity, setQuantity] = useState('');
+    const [price, setPrice] = useState('');
+    const [total, setTotal] = useState('');
+
+
+    const changeTotal1 = (e) => {
+        setQuantity(e.target.value);
+        setTotal(e.target.value * price );
+    }
+
+    const changeTotal2 = (e) => {
+        setPrice(e.target.value);
+        setTotal(e.target.value * quantity );
+    }
+
+    return (
+        <div>
+            <input type="number" placeholder='Quantity' value={quantity} onChange={changeTotal1}/>
+
+            <input type='number' placeholder='Price' value={price} onChange={changeTotal2}/>
+
+            <input type='number' placeholder='Total' value={total} />
+        </div>
+    );
 }
 
 export default App;
+
